@@ -1,8 +1,8 @@
 import { Cormorant_Garamond, Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale, getLocale } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { locales } from '@/i18n';
+import { routing, type Locale } from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CartSidebar from '@/components/cart/CartSidebar';
@@ -22,7 +22,7 @@ const inter = Inter({
 });
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 export const metadata = {
@@ -41,7 +41,7 @@ interface RootLayoutProps {
 }
 
 export default async function RootLayout({ children, params: { locale } }: RootLayoutProps) {
-  if (!locales.includes(locale as typeof locales[number])) notFound();
+  if (!routing.locales.includes(locale as Locale)) notFound();
 
   setRequestLocale(locale);
   const messages = await getMessages();
