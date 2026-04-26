@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-creme: #F5EDE4;
+    --color-nude: #E8D5C4;
+    --color-rose: #D4A092;
+    --color-caramel: #A67B5B;
+    --color-gold: #C9A96E;
+    --color-dark: #4A3728;
+    --color-darker: #2C1810;
+  }
+
+  * {
+    @apply border-nude;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-creme text-dark font-sans antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-darker;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-creme;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-caramel/40 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-caramel/70;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply text-[0.65rem] tracking-widest3 uppercase text-caramel font-sans;
+  }
+
+  .section-title {
+    @apply font-serif text-4xl md:text-5xl text-darker leading-tight;
+  }
+
+  .thin-divider {
+    @apply h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent;
+  }
+
+  .gold-accent {
+    @apply text-gold;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-dark text-creme text-xs tracking-widest2 uppercase px-8 py-4 transition-all duration-300 hover:bg-darker hover:tracking-widest3;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border border-dark text-dark text-xs tracking-widest2 uppercase px-8 py-4 transition-all duration-300 hover:bg-dark hover:text-creme;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 bg-gold text-darker text-xs tracking-widest2 uppercase px-8 py-4 transition-all duration-300 hover:bg-caramel hover:text-creme;
+  }
+
+  .input-luxury {
+    @apply w-full bg-transparent border-b border-nude text-dark placeholder-dark/40 py-3 text-sm focus:outline-none focus:border-caramel transition-colors duration-200;
+  }
+
+  .card-product {
+    @apply bg-white/60 border border-nude/60 transition-all duration-500 hover:shadow-lg hover:shadow-dark/5;
+  }
+
+  .nav-link {
+    @apply text-[0.7rem] tracking-widest2 uppercase text-dark/70 hover:text-dark transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+/* Cormorant Garamond decorative spark */
+.spark::after {
+  content: ' ✦';
+  @apply text-gold text-xs;
+}
+
+/* Smooth page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms, transform 400ms;
+}
