@@ -50,17 +50,17 @@ export default function ProductCard({ product, featured = false }: ProductCardPr
           {/* Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-1.5">
             {product.isBestseller && (
-              <span className="bg-dark text-creme text-[0.5rem] tracking-widest uppercase px-2 py-1">
+              <span className="bg-dark text-creme text-[0.5rem] tracking-widest uppercase px-2.5 py-1 rounded-full">
                 {t('bestseller')}
               </span>
             )}
             {product.isNew && (
-              <span className="bg-gold text-darker text-[0.5rem] tracking-widest uppercase px-2 py-1">
+              <span className="bg-gold text-darker text-[0.5rem] tracking-widest uppercase px-2.5 py-1 rounded-full">
                 {t('new')}
               </span>
             )}
             {product.originalPrice && (
-              <span className="bg-rose text-creme text-[0.5rem] tracking-widest uppercase px-2 py-1">
+              <span className="bg-rose text-creme text-[0.5rem] tracking-widest uppercase px-2.5 py-1 rounded-full">
                 SALE
               </span>
             )}
@@ -71,7 +71,7 @@ export default function ProductCard({ product, featured = false }: ProductCardPr
             <button
               onClick={handleAddToCart}
               className={cn(
-                'w-full flex items-center justify-center gap-2 py-3 text-[0.6rem] tracking-widest uppercase transition-all duration-200',
+                'w-full flex items-center justify-center gap-2 py-3 text-[0.6rem] tracking-widest uppercase transition-all duration-200 rounded-b-2xl',
                 added
                   ? 'bg-gold text-darker'
                   : 'bg-dark text-creme hover:bg-darker'

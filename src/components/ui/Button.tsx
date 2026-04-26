@@ -12,7 +12,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'primary', size = 'md', loading, children, disabled, ...props }, ref) => {
     const base =
-      'inline-flex items-center justify-center gap-2 font-sans text-xs tracking-widest2 uppercase transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed';
+      'inline-flex items-center justify-center gap-2 font-sans text-xs tracking-widest2 uppercase rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed';
 
     const variants = {
       primary: 'bg-dark text-creme hover:bg-darker hover:tracking-widest3',

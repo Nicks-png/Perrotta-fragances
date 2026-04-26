@@ -5,9 +5,10 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/navigation';
 import { useCartStore } from '@/store/cartStore';
 import { useAuthStore } from '@/store/authStore';
-import { ShoppingBag, User, Search, Menu, X, ChevronDown } from 'lucide-react';
+import { ShoppingBag, User, Search, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
+import { LogoFull, LogoIcon } from '@/components/brand/Logo';
 
 export default function Header() {
   const t = useTranslations('nav');
@@ -40,8 +41,9 @@ export default function Header() {
   };
 
   const itemCount = totalItems();
+  const inverted = isHome && !scrolled;
 
-  const headerBg = isHome && !scrolled
+  const headerBg = inverted
     ? 'bg-transparent border-transparent'
     : 'bg-creme/95 backdrop-blur-sm border-nude/60 shadow-sm shadow-dark/5';
 
@@ -63,41 +65,46 @@ export default function Header() {
             </nav>
 
             {/* Logo — center */}
-            <Link
-              href="/"
-              className="flex flex-col items-center select-none group"
-            >
-              <span className={cn(
-                'font-serif text-lg md:text-xl tracking-widest2 font-light transition-colors duration-300',
-                isHome && !scrolled ? 'text-creme' : 'text-darker'
-              )}>
-                PERROTTA
-              </span>
-              <div className="flex items-center gap-2">
-                <div className={cn('h-px w-6 transition-colors duration-300', isHome && !scrolled ? 'bg-creme/50' : 'bg-gold/60')} />
+            <Link href="/" className="flex items-center gap-2.5 select-none group">
+              <LogoIcon
+                size={36}
+                className={cn(
+                  'transition-colors duration-300',
+                  inverted ? 'text-creme' : 'text-darker'
+                )}
+              />
+              <div className="flex flex-col">
                 <span className={cn(
-                  'text-[0.45rem] tracking-widest3 font-sans transition-colors duration-300',
-                  isHome && !scrolled ? 'text-creme/80' : 'text-caramel'
+                  'font-serif text-base md:text-lg tracking-widest2 font-light leading-none transition-colors duration-300',
+                  inverted ? 'text-creme' : 'text-darker'
                 )}>
-                  FRAGRANCES
+                  PERROTTA
                 </span>
-                <div className={cn('h-px w-6 transition-colors duration-300', isHome && !scrolled ? 'bg-creme/50' : 'bg-gold/60')} />
+                <div className="flex items-center gap-1.5 mt-0.5">
+                  <div className={cn('h-px w-4 transition-colors duration-300', inverted ? 'bg-creme/40' : 'bg-caramel/50')} />
+                  <span className={cn(
+                    'text-[0.42rem] tracking-widest3 font-sans transition-colors duration-300',
+                    inverted ? 'text-creme/70' : 'text-caramel'
+                  )}>
+                    FRAGRANCES
+                  </span>
+                  <div className={cn('h-px w-4 transition-colors duration-300', inverted ? 'bg-creme/40' : 'bg-caramel/50')} />
+                </div>
               </div>
             </Link>
 
             {/* Right nav */}
             <div className="flex items-center gap-4 md:gap-6 flex-1 justify-end">
-              {/* About — desktop */}
               <Link href="/about" className="hidden md:block nav-link">{t('about')}</Link>
 
               {/* Language toggle */}
               <button
                 onClick={toggleLocale}
                 className={cn(
-                  'hidden md:flex text-[0.6rem] tracking-widest uppercase font-sans transition-colors duration-200',
-                  isHome && !scrolled
-                    ? 'text-creme/70 hover:text-creme'
-                    : 'text-dark/50 hover:text-dark'
+                  'hidden md:flex text-[0.6rem] tracking-widest uppercase font-sans transition-colors duration-200 px-2 py-1 rounded-full border',
+                  inverted
+                    ? 'text-creme/70 hover:text-creme border-creme/20 hover:border-creme/40'
+                    : 'text-dark/50 hover:text-dark border-nude hover:border-dark/30'
                 )}
               >
                 {locale === 'pt' ? 'EN' : 'PT'}
@@ -108,9 +115,7 @@ export default function Header() {
                 onClick={() => setSearchOpen(true)}
                 className={cn(
                   'transition-colors duration-200',
-                  isHome && !scrolled
-                    ? 'text-creme/70 hover:text-creme'
-                    : 'text-dark/60 hover:text-dark'
+                  inverted ? 'text-creme/70 hover:text-creme' : 'text-dark/60 hover:text-dark'
                 )}
                 aria-label={t('search')}
               >
@@ -124,9 +129,7 @@ export default function Header() {
                     href="/account"
                     className={cn(
                       'transition-colors duration-200',
-                      isHome && !scrolled
-                        ? 'text-creme/70 hover:text-creme'
-                        : 'text-dark/60 hover:text-dark'
+                      inverted ? 'text-creme/70 hover:text-creme' : 'text-dark/60 hover:text-dark'
                     )}
                   >
                     <User size={17} strokeWidth={1.5} />
@@ -136,9 +139,7 @@ export default function Header() {
                       href="/admin"
                       className={cn(
                         'text-[0.55rem] tracking-widest uppercase transition-colors duration-200 ml-1',
-                        isHome && !scrolled
-                          ? 'text-gold/80 hover:text-gold'
-                          : 'text-gold hover:text-caramel'
+                        inverted ? 'text-gold/80 hover:text-gold' : 'text-gold hover:text-caramel'
                       )}
                     >
                       Admin
@@ -150,9 +151,7 @@ export default function Header() {
                   href="/login"
                   className={cn(
                     'hidden md:block text-[0.6rem] tracking-widest uppercase font-sans transition-colors duration-200',
-                    isHome && !scrolled
-                      ? 'text-creme/70 hover:text-creme'
-                      : 'text-dark/50 hover:text-dark'
+                    inverted ? 'text-creme/70 hover:text-creme' : 'text-dark/50 hover:text-dark'
                   )}
                 >
                   {t('login')}
@@ -164,9 +163,7 @@ export default function Header() {
                 onClick={openCart}
                 className={cn(
                   'relative transition-colors duration-200',
-                  isHome && !scrolled
-                    ? 'text-creme/80 hover:text-creme'
-                    : 'text-dark/70 hover:text-dark'
+                  inverted ? 'text-creme/80 hover:text-creme' : 'text-dark/70 hover:text-dark'
                 )}
                 aria-label={t('cart')}
               >
@@ -183,9 +180,7 @@ export default function Header() {
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className={cn(
                   'md:hidden transition-colors duration-200',
-                  isHome && !scrolled
-                    ? 'text-creme/80 hover:text-creme'
-                    : 'text-dark/70 hover:text-dark'
+                  inverted ? 'text-creme/80 hover:text-creme' : 'text-dark/70 hover:text-dark'
                 )}
               >
                 {mobileOpen ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
@@ -205,6 +200,9 @@ export default function Header() {
             transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
             className="fixed inset-0 z-40 bg-creme flex flex-col pt-20"
           >
+            <div className="flex justify-center py-6 border-b border-nude">
+              <LogoFull />
+            </div>
             <nav className="flex flex-col px-8 py-8 gap-8">
               {[
                 { href: '/shop', label: t('shop') },
@@ -239,7 +237,7 @@ export default function Header() {
             <div className="px-8 mt-auto pb-8 flex items-center justify-between border-t border-nude pt-6">
               <button
                 onClick={toggleLocale}
-                className="text-xs tracking-widest uppercase text-dark/50"
+                className="text-xs tracking-widest uppercase text-dark/50 border border-nude rounded-full px-3 py-1"
               >
                 {locale === 'pt' ? 'English' : 'Português'}
               </button>
@@ -256,14 +254,14 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-darker/60 backdrop-blur-sm flex items-start justify-center pt-28"
+            className="fixed inset-0 z-50 bg-darker/60 backdrop-blur-sm flex items-start justify-center pt-28 px-4"
             onClick={(e) => e.target === e.currentTarget && setSearchOpen(false)}
           >
             <motion.div
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
-              className="w-full max-w-xl mx-4 bg-creme"
+              className="w-full max-w-xl bg-creme rounded-2xl overflow-hidden shadow-2xl"
             >
               <div className="flex items-center gap-4 px-6 py-4 border-b border-nude">
                 <Search size={16} className="text-caramel shrink-0" strokeWidth={1.5} />

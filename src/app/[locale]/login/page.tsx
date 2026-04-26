@@ -104,7 +104,7 @@ export default function LoginPage() {
           <div className="thin-divider my-6" />
 
           {/* Demo hint */}
-          <div className="bg-nude/40 border border-nude p-3 mb-5 text-center">
+          <div className="bg-nude/40 border border-nude p-3 mb-5 text-center rounded-xl">
             <p className="text-[0.6rem] text-dark/50 leading-relaxed">{t('demo_hint')}</p>
           </div>
 

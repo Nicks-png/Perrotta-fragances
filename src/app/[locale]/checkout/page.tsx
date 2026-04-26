@@ -189,7 +189,7 @@ export default function CheckoutPage() {
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
                         <p className="text-sm font-medium text-darker">{t('pix')}</p>
-                        <span className="text-[0.5rem] tracking-widest uppercase bg-green-100 text-green-700 px-2 py-0.5">
+                        <span className="text-[0.5rem] tracking-widest uppercase bg-green-100 text-green-700 px-2 py-0.5 rounded-full">
                           {t('pix_discount')}
                         </span>
                       </div>

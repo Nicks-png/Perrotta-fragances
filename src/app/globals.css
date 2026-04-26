@@ -65,15 +65,15 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-dark text-creme text-xs tracking-widest2 uppercase px-8 py-4 transition-all duration-300 hover:bg-darker hover:tracking-widest3;
+    @apply inline-flex items-center justify-center gap-2 bg-dark text-creme text-xs tracking-widest2 uppercase px-8 py-4 rounded-full transition-all duration-300 hover:bg-darker hover:tracking-widest3;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 border border-dark text-dark text-xs tracking-widest2 uppercase px-8 py-4 transition-all duration-300 hover:bg-dark hover:text-creme;
+    @apply inline-flex items-center justify-center gap-2 border border-dark text-dark text-xs tracking-widest2 uppercase px-8 py-4 rounded-full transition-all duration-300 hover:bg-dark hover:text-creme;
   }
 
   .btn-gold {
-    @apply inline-flex items-center justify-center gap-2 bg-gold text-darker text-xs tracking-widest2 uppercase px-8 py-4 transition-all duration-300 hover:bg-caramel hover:text-creme;
+    @apply inline-flex items-center justify-center gap-2 bg-gold text-darker text-xs tracking-widest2 uppercase px-8 py-4 rounded-full transition-all duration-300 hover:bg-caramel hover:text-creme;
   }
 
   .input-luxury {
@@ -81,7 +81,7 @@
   }
 
   .card-product {
-    @apply bg-white/60 border border-nude/60 transition-all duration-500 hover:shadow-lg hover:shadow-dark/5;
+    @apply bg-white/60 border border-nude/60 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-dark/5;
   }
 
   .nav-link {

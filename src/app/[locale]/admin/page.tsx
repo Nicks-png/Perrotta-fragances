@@ -127,7 +127,7 @@ export default function AdminDashboard() {
                       <td className="px-5 py-4 text-xs text-dark/50">{formatDate(order.date)}</td>
                       <td className="px-5 py-4 text-xs font-medium text-dark">{formatCurrency(order.total)}</td>
                       <td className="px-5 py-4">
-                        <span className={`text-[0.55rem] tracking-widest uppercase px-2 py-1 ${STATUS_STYLES[order.status as keyof typeof STATUS_STYLES]}`}>
+                        <span className={`text-[0.55rem] tracking-widest uppercase px-2 py-1 rounded-full ${STATUS_STYLES[order.status as keyof typeof STATUS_STYLES]}`}>
                           {STATUS_LABELS[order.status as keyof typeof STATUS_LABELS]}
                         </span>
                       </td>

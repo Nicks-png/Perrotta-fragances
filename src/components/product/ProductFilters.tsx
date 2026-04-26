@@ -100,7 +100,7 @@ export default function ProductFilters({ filters, onChange, onClear, totalResult
             <button
               key={value}
               onClick={() => onChange({ gender: value })}
-              className={`text-[0.6rem] tracking-widest uppercase px-3 py-1.5 border transition-all duration-200 ${
+              className={`text-[0.6rem] tracking-widest uppercase px-3 py-1.5 border rounded-full transition-all duration-200 ${
                 filters.gender === value
                   ? 'bg-dark text-creme border-dark'
                   : 'border-nude text-dark/60 hover:border-dark/30'
@@ -120,7 +120,7 @@ export default function ProductFilters({ filters, onChange, onClear, totalResult
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => onChange({ concentration: '' })}
-            className={`text-[0.6rem] tracking-widest uppercase px-3 py-1.5 border transition-all duration-200 ${
+            className={`text-[0.6rem] tracking-widest uppercase px-3 py-1.5 border rounded-full transition-all duration-200 ${
               filters.concentration === ''
                 ? 'bg-dark text-creme border-dark'
                 : 'border-nude text-dark/60 hover:border-dark/30'
@@ -132,7 +132,7 @@ export default function ProductFilters({ filters, onChange, onClear, totalResult
             <button
               key={conc}
               onClick={() => onChange({ concentration: conc })}
-              className={`text-[0.6rem] tracking-widest uppercase px-3 py-1.5 border transition-all duration-200 ${
+              className={`text-[0.6rem] tracking-widest uppercase px-3 py-1.5 border rounded-full transition-all duration-200 ${
                 filters.concentration === conc
                   ? 'bg-dark text-creme border-dark'
                   : 'border-nude text-dark/60 hover:border-dark/30'

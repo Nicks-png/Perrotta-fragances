@@ -72,19 +72,19 @@ export default function ProductPage() {
 
           {/* Image */}
           <div className="relative">
-            <div className="aspect-[3/4] max-w-md mx-auto md:mx-0 bg-nude/20 border border-nude/40 overflow-hidden">
+            <div className="aspect-[3/4] max-w-md mx-auto md:mx-0 bg-nude/20 border border-nude/40 overflow-hidden rounded-3xl">
               <PerfumePlaceholder gender={product.gender} brand={product.brand} size="lg" />
             </div>
 
             {/* Badges */}
             <div className="absolute top-4 left-4 flex flex-col gap-2">
               {product.isBestseller && (
-                <span className="bg-dark text-creme text-[0.5rem] tracking-widest uppercase px-3 py-1.5">
+                <span className="bg-dark text-creme text-[0.5rem] tracking-widest uppercase px-3 py-1.5 rounded-full">
                   {t('bestseller')}
                 </span>
               )}
               {product.isNew && (
-                <span className="bg-gold text-darker text-[0.5rem] tracking-widest uppercase px-3 py-1.5">
+                <span className="bg-gold text-darker text-[0.5rem] tracking-widest uppercase px-3 py-1.5 rounded-full">
                   {t('new')}
                 </span>
               )}
@@ -123,10 +123,10 @@ export default function ProductPage() {
 
             {/* Family + concentration */}
             <div className="flex items-center gap-3 mb-6">
-              <span className="text-[0.6rem] tracking-widest uppercase text-dark/40 bg-nude/40 px-3 py-1.5">
+              <span className="text-[0.6rem] tracking-widest uppercase text-dark/40 bg-nude/40 px-3 py-1.5 rounded-full">
                 {product.olfactoryFamily}
               </span>
-              <span className="text-[0.6rem] tracking-widest uppercase text-dark/40 bg-nude/40 px-3 py-1.5">
+              <span className="text-[0.6rem] tracking-widest uppercase text-dark/40 bg-nude/40 px-3 py-1.5 rounded-full">
                 {product.concentration}
               </span>
             </div>
@@ -153,7 +153,7 @@ export default function ProductPage() {
                   <button
                     key={vol}
                     onClick={() => setSelectedVolume(vol)}
-                    className={`px-4 py-2 text-xs border transition-all duration-200 ${
+                    className={`px-4 py-2 text-xs border rounded-full transition-all duration-200 ${
                       selectedVolume === vol
                         ? 'bg-dark text-creme border-dark'
                         : 'border-nude text-dark hover:border-dark/40'

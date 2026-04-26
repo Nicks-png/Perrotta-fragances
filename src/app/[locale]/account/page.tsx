@@ -117,7 +117,7 @@ export default function AccountPage() {
                           </div>
                           <div className="flex items-center gap-3">
                             <span className={cn(
-                              'text-[0.55rem] tracking-widest uppercase px-2 py-1',
+                              'text-[0.55rem] tracking-widest uppercase px-2 py-1 rounded-full',
                               STATUS_STYLES[order.status]
                             )}>
                               {t(`status_${order.status}`)}

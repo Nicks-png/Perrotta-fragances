@@ -47,7 +47,7 @@ export default function CartSidebar() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-            className="fixed right-0 top-0 h-full w-full max-w-md bg-creme z-50 flex flex-col shadow-2xl"
+            className="fixed right-0 top-0 h-full w-full max-w-md bg-creme z-50 flex flex-col shadow-2xl rounded-l-3xl"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-nude">
@@ -55,7 +55,7 @@ export default function CartSidebar() {
                 <ShoppingBag size={18} strokeWidth={1.5} className="text-dark" />
                 <span className="font-serif text-lg text-darker">{t('title')}</span>
                 {itemCount > 0 && (
-                  <span className="bg-gold text-darker text-[0.5rem] px-2 py-0.5 font-medium">
+                  <span className="bg-gold text-darker text-[0.5rem] px-2 py-0.5 font-medium rounded-full">
                     {itemCount}
                   </span>
                 )}
@@ -93,7 +93,7 @@ export default function CartSidebar() {
                       className="flex gap-4 py-4 border-b border-nude/50 last:border-0"
                     >
                       {/* Thumbnail */}
-                      <div className="w-20 h-24 shrink-0 overflow-hidden">
+                      <div className="w-20 h-24 shrink-0 overflow-hidden rounded-xl">
                         <PerfumePlaceholder gender={item.gender} brand={item.brand} />
                       </div>
 
@@ -107,7 +107,7 @@ export default function CartSidebar() {
 
                         <div className="flex items-center justify-between mt-3">
                           {/* Quantity */}
-                          <div className="flex items-center border border-nude">
+                          <div className="flex items-center border border-nude rounded-full overflow-hidden">
                             <button
                               onClick={() => updateQuantity(item.productId, item.volume, item.quantity - 1)}
                               className="px-2.5 py-1 text-dark/50 hover:text-dark hover:bg-nude/40 transition-colors"
@@ -153,12 +153,12 @@ export default function CartSidebar() {
                   </div>
                 )}
                 {subtotal >= 500 && (
-                  <div className="text-center text-[0.6rem] tracking-widest uppercase text-green-600/70 bg-green-50 py-2">
+                  <div className="text-center text-[0.6rem] tracking-widest uppercase text-green-600/70 bg-green-50 py-2 rounded-xl">
                     ✓ Frete grátis incluído
                   </div>
                 )}
                 {subtotal < 500 && (
-                  <div className="text-center text-[0.6rem] text-dark/40 bg-nude/30 py-2">
+                  <div className="text-center text-[0.6rem] text-dark/40 bg-nude/30 py-2 rounded-xl">
                     Falta {formatCurrency(500 - subtotal)} para frete grátis
                   </div>
                 )}
