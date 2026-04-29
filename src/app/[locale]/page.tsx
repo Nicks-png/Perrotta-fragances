@@ -3,6 +3,7 @@ import BrandsMarquee from '@/components/home/BrandsMarquee';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
 import AboutTeaser from '@/components/home/AboutTeaser';
 import Testimonials from '@/components/home/Testimonials';
+import Newsletter from '@/components/home/Newsletter';
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <FeaturedProducts />
       <AboutTeaser />
       <Testimonials />
+      <Newsletter />
     </>
   );
 }

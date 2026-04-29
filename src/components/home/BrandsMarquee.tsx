@@ -1,35 +1,78 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { brands } from '@/data/brands';
+import Sparkle from '@/components/brand/Sparkle';
+
+const BRANDS = [
+  'Chanel',
+  'Dior',
+  'Valentino',
+  'Prada',
+  'Parfums de Marly',
+  'Carolina Herrera',
+  'Hugo Boss',
+  'Dolce & Gabbana',
+];
 
 export default function BrandsMarquee() {
   const t = useTranslations('home.brands');
-  const doubled = [...brands, ...brands];
+  const doubled = [...BRANDS, ...BRANDS];
 
   return (
-    <section className="py-16 bg-darker overflow-hidden border-y border-creme/5">
-      <div className="max-w-screen-xl mx-auto px-6 md:px-10 mb-8 text-center">
-        <p className="section-label text-gold/60">{t('label')}</p>
+    <section
+      id="brands"
+      style={{
+        padding: '80px 0',
+        background:
+          'linear-gradient(180deg, var(--color-creme-soft), var(--color-creme-deep), var(--color-creme-soft))',
+        borderTop: '1px solid var(--line-soft)',
+        borderBottom: '1px solid var(--line-soft)',
+        overflow: 'hidden',
+        position: 'relative',
+      }}
+    >
+      <div className="container-editorial" style={{ textAlign: 'center', marginBottom: 36 }}>
+        <p className="eyebrow-thin reveal">{t('label')}</p>
       </div>
-
-      {/* Marquee */}
-      <div className="relative flex overflow-x-hidden">
-        {/* Left fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-darker to-transparent z-10" />
-        {/* Right fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-darker to-transparent z-10" />
-
-        <div className="flex animate-marquee whitespace-nowrap">
-          {doubled.map((brand, i) => (
-            <span
-              key={`${brand.id}-${i}`}
-              className="inline-flex items-center gap-8 mx-8"
-            >
-              <span className="font-serif text-2xl md:text-3xl font-light tracking-widest text-creme/20 hover:text-creme/50 transition-colors duration-500 cursor-default select-none">
-                {brand.name}
-              </span>
-              <span className="text-gold/20 text-sm">✦</span>
+      <div style={{ position: 'relative' }}>
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            bottom: 0,
+            width: 160,
+            background:
+              'linear-gradient(90deg, var(--color-creme-soft), transparent)',
+            zIndex: 2,
+            pointerEvents: 'none',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            right: 0,
+            top: 0,
+            bottom: 0,
+            width: 160,
+            background:
+              'linear-gradient(270deg, var(--color-creme-soft), transparent)',
+            zIndex: 2,
+            pointerEvents: 'none',
+          }}
+        />
+        <div className="marquee-track">
+          {doubled.map((b, i) => (
+            <span key={i} className="brand-tag">
+              {b}
+              <Sparkle
+                size={6}
+                style={{
+                  color: 'var(--color-gold)',
+                  opacity: 0.45,
+                  marginLeft: 28,
+                }}
+              />
             </span>
           ))}
         </div>
