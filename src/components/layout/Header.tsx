@@ -68,27 +68,18 @@ export default function Header() {
             <Link href="/" className="flex items-center gap-2.5 select-none group">
               <LogoIcon
                 size={36}
-                className={cn(
-                  'transition-colors duration-300',
-                  inverted ? 'text-creme' : 'text-darker'
-                )}
+                className="transition-colors duration-300 text-darker"
               />
               <div className="flex flex-col">
-                <span className={cn(
-                  'font-serif text-base md:text-lg tracking-widest2 font-light leading-none transition-colors duration-300',
-                  inverted ? 'text-creme' : 'text-darker'
-                )}>
+                <span className="font-serif text-base md:text-lg tracking-widest2 font-light leading-none transition-colors duration-300 text-darker">
                   PERROTTA
                 </span>
                 <div className="flex items-center gap-1.5 mt-0.5">
-                  <div className={cn('h-px w-4 transition-colors duration-300', inverted ? 'bg-creme/40' : 'bg-caramel/50')} />
-                  <span className={cn(
-                    'text-[0.42rem] tracking-widest3 font-sans transition-colors duration-300',
-                    inverted ? 'text-creme/70' : 'text-caramel'
-                  )}>
+                  <div className="h-px w-4 transition-colors duration-300 bg-caramel/50" />
+                  <span className="text-[0.42rem] tracking-widest3 font-sans transition-colors duration-300 text-caramel">
                     FRAGRANCES
                   </span>
-                  <div className={cn('h-px w-4 transition-colors duration-300', inverted ? 'bg-creme/40' : 'bg-caramel/50')} />
+                  <div className="h-px w-4 transition-colors duration-300 bg-caramel/50" />
                 </div>
               </div>
             </Link>

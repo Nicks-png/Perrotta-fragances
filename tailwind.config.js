@@ -17,6 +17,7 @@ module.exports = {
       fontFamily: {
         serif: ['var(--font-cormorant)', ...fontFamily.serif],
         sans: ['var(--font-inter)', ...fontFamily.sans],
+        italiana: ['var(--font-italiana)', 'var(--font-cormorant)', ...fontFamily.serif],
       },
       animation: {
         marquee: 'marquee 35s linear infinite',

@@ -1,105 +1,182 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Star } from 'lucide-react';
+import { useReveal } from '@/lib/useReveal';
+import Sparkle from '@/components/brand/Sparkle';
 
 const TESTIMONIALS = [
   {
-    id: 1,
-    author: 'Isabela M.',
-    city: 'São Paulo, SP',
-    rating: 5,
-    text: '"Comprei o Chanel N°5 e chegou rápido, embalagem impecável, produto 100% original. A experiência foi como comprar numa boutique."',
+    name: 'Isabela M.',
+    city: 'São Paulo',
+    text: 'Recebi o N°5 numa caixa que parecia presente. O atendimento é como o perfume — atemporal.',
   },
   {
-    id: 2,
-    author: 'Rafael T.',
-    city: 'Rio de Janeiro, RJ',
-    rating: 5,
-    text: '"Já é a terceira vez que compro na Perrotta. O Dior Sauvage é meu perfume de cabeceira e nunca encontrei um preço melhor com essa qualidade de atendimento."',
+    name: 'Camila R.',
+    city: 'Curitiba',
+    text: 'Delina, da Parfums de Marly, é divinal. A curadoria da Perrotta é uma das mais delicadas do Brasil.',
   },
   {
-    id: 3,
-    author: 'Camila R.',
-    city: 'Curitiba, PR',
-    rating: 5,
-    text: '"O Parfums de Marly Delina é simplesmente divino. Recebi elogios o dia inteiro. Perrotta Fragrances tem uma curadoria que poucos têm."',
+    name: 'Júlia A.',
+    city: 'Belo Horizonte',
+    text: 'Cheguei pelo Miss Dior e fiquei pelo cuidado. Já viraram a minha boutique de confiança.',
   },
 ];
 
 export default function Testimonials() {
   const t = useTranslations('home.testimony');
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  useReveal();
+
+  const titleRaw = t('title');
+  const titleWords = titleRaw.split(' ');
+  const midStart = Math.max(1, Math.floor(titleWords.length / 3));
+  const midEnd = Math.min(titleWords.length - 1, midStart + 1);
+  const titleStart = titleWords.slice(0, midStart).join(' ');
+  const titleAccent = titleWords.slice(midStart, midEnd + 1).join(' ');
+  const titleEnd = titleWords.slice(midEnd + 1).join(' ');
 
   return (
-    <section ref={ref} className="py-24 md:py-32 bg-nude/30">
-      <div className="max-w-screen-xl mx-auto px-6 md:px-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-14"
-        >
-          <p className="section-label mb-3">{t('label')}</p>
-          <h2 className="section-title">{t('title')}</h2>
-        </motion.div>
+    <section
+      className="section-editorial"
+      style={{ background: 'var(--color-creme)', position: 'relative' }}
+    >
+      <div className="container-editorial">
+        <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
+          <p className="eyebrow-thin" style={{ marginBottom: 16 }}>
+            {t('label')}
+          </p>
+          <h2
+            className="font-display"
+            style={{
+              fontSize: 'clamp(36px, 4.5vw, 60px)',
+              margin: 0,
+              fontWeight: 300,
+              color: 'var(--color-darker)',
+              lineHeight: 1.1,
+            }}
+          >
+            {titleStart}{' '}
+            {titleAccent && (
+              <em
+                style={{
+                  fontFamily:
+                    "var(--font-italiana), 'Italiana', 'Cormorant Garamond', serif",
+                  fontStyle: 'normal',
+                  color: 'var(--color-caramel)',
+                }}
+              >
+                {titleAccent}
+              </em>
+            )}{' '}
+            {titleEnd}
+          </h2>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {TESTIMONIALS.map((item, i) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: i * 0.12 }}
-              className="bg-creme border border-nude p-7 flex flex-col"
-            >
-              {/* Stars */}
-              <div className="flex gap-1 mb-5">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} size={12} strokeWidth={0} className="fill-gold" />
-                ))}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+          {TESTIMONIALS.map((entry, i) => (
+            <div key={i} className={`glass-card reveal reveal-${i + 2}`}>
+              <div className="quote-mark" style={{ marginBottom: 8 }}>
+                &ldquo;
               </div>
-
-              {/* Quote */}
-              <p className="text-sm text-dark/60 leading-relaxed italic flex-1 font-light">
-                {item.text}
+              <p
+                style={{
+                  fontFamily:
+                    "var(--font-cormorant), 'Cormorant Garamond', serif",
+                  fontStyle: 'italic',
+                  fontSize: 18,
+                  color: 'var(--color-dark)',
+                  lineHeight: 1.7,
+                  margin: '0 0 28px',
+                  minHeight: 120,
+                }}
+              >
+                {entry.text}
               </p>
-
-              {/* Author */}
-              <div className="flex items-center gap-3 mt-6 pt-5 border-t border-nude">
-                <div className="w-8 h-8 bg-nude rounded-full flex items-center justify-center">
-                  <span className="font-serif text-sm text-caramel">
-                    {item.author.charAt(0)}
-                  </span>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 14,
+                  paddingTop: 24,
+                  borderTop: '1px solid var(--line-soft)',
+                }}
+              >
+                <div
+                  style={{
+                    width: 38,
+                    height: 38,
+                    borderRadius: '50%',
+                    background:
+                      'linear-gradient(135deg, var(--color-nude), var(--color-rose-soft))',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontFamily:
+                      "var(--font-cormorant), 'Cormorant Garamond', serif",
+                    color: 'var(--color-darker)',
+                    fontSize: 16,
+                  }}
+                >
+                  {entry.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="text-xs font-medium text-dark">{item.author}</p>
-                  <p className="text-[0.6rem] text-dark/40">{item.city}</p>
+                  <p
+                    style={{
+                      fontSize: 11,
+                      color: 'var(--color-dark)',
+                      margin: 0,
+                      letterSpacing: '0.1em',
+                      fontWeight: 500,
+                    }}
+                  >
+                    {entry.name}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: 9,
+                      color: 'var(--color-caramel)',
+                      margin: '4px 0 0',
+                      letterSpacing: '0.3em',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {entry.city}
+                  </p>
+                </div>
+                <div style={{ marginLeft: 'auto', display: 'flex', gap: 2 }}>
+                  {Array.from({ length: 5 }).map((_, s) => (
+                    <Sparkle
+                      key={s}
+                      size={7}
+                      style={{ color: 'var(--color-gold)' }}
+                    />
+                  ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        {/* Bottom quote */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="text-center mt-16"
-        >
-          <div className="thin-divider mb-8" />
-          <p className="font-serif text-2xl md:text-3xl text-dark/40 italic">
-            "Sofisticação em cada essência."
+        <div className="reveal" style={{ textAlign: 'center', marginTop: 72 }}>
+          <span
+            className="rule-thin"
+            style={{ display: 'block', width: 200, margin: '0 auto 32px' }}
+          />
+          <p
+            className="font-display"
+            style={{
+              fontSize: 'clamp(24px, 3vw, 38px)',
+              fontStyle: 'italic',
+              color: 'var(--color-caramel-deep)',
+              margin: 0,
+              fontWeight: 300,
+            }}
+          >
+            “Sofisticação em cada essência.”
           </p>
-          <p className="text-[0.6rem] tracking-widest uppercase text-gold/60 mt-3">
-            — Perrotta Fragrances ✦
+          <p className="eyebrow-thin" style={{ marginTop: 18 }}>
+            Perrotta · 2024
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
