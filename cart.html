@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho — Perrotta Fragrances</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-offset">
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text">
+        <span class="logo-name">PERROTTA</span>
+        <span class="logo-sub">Fragrances</span>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="shop.html" class="nav-link">Loja</a>
+      <a href="shop.html#brands" class="nav-link">Marcas</a>
+      <a href="about.html" class="nav-link">Sobre</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn" aria-label="Carrinho">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-badge"></span>
+      </a>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav">
+  <a href="shop.html" class="nav-link">Loja</a>
+  <a href="about.html" class="nav-link">Sobre</a>
+  <a href="cart.html" class="nav-link">Carrinho</a>
+</nav>
+
+<main class="cart-page">
+  <div class="container">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" style="margin-bottom:32px">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Carrinho</span>
+    </nav>
+    <h1 class="serif" style="font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:40px;color:var(--darker)">Meu Carrinho</h1>
+
+    <!-- Empty state -->
+    <div class="cart-empty hidden" id="cart-empty">
+      <div class="cart-empty-icon">✦</div>
+      <h2>Seu carrinho está vazio</h2>
+      <p>Explore nossa coleção e encontre a fragrância perfeita para você.</p>
+      <a href="shop.html" class="btn btn-primary">Explorar Coleção</a>
+    </div>
+
+    <!-- Cart layout -->
+    <div class="cart-layout hidden" id="cart-layout">
+      <!-- Items -->
+      <div>
+        <div class="cart-table-header">
+          <span>Produto</span>
+          <span style="text-align:center">Preço</span>
+          <span style="text-align:center">Quantidade</span>
+          <span></span>
+        </div>
+        <div id="cart-items"></div>
+
+        <div style="display:flex;gap:16px;margin-top:24px;flex-wrap:wrap">
+          <a href="shop.html" class="btn btn-ghost">← Continuar Comprando</a>
+        </div>
+
+        <!-- Coupon -->
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--nude)">
+          <p style="font-size:.65rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--caramel);margin-bottom:10px">Cupom de Desconto</p>
+          <div style="display:flex;gap:8px">
+            <input id="coupon-input" class="form-input" type="text" placeholder="Digite seu cupom..." style="flex:1">
+            <button id="coupon-btn" class="btn btn-ghost btn-sm">Aplicar</button>
+          </div>
+          <p style="font-size:.72rem;color:var(--caramel);margin-top:6px;opacity:.7">Experimente: PERROTTA10</p>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="order-summary">
+        <h3 class="summary-title">Resumo do Pedido</h3>
+        <div class="summary-row">
+          <span>Subtotal (<span id="summary-count">0</span> itens)</span>
+          <span id="summary-subtotal">R$ 0,00</span>
+        </div>
+        <div class="cep-row">
+          <input class="cep-input" id="cep-input" type="text" placeholder="Digite seu CEP" maxlength="9">
+          <button class="btn btn-ghost btn-sm" onclick="calcFrete()">Calcular</button>
+        </div>
+        <div class="summary-row">
+          <span>Frete</span>
+          <span id="summary-frete">—</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total</span>
+          <span id="summary-total">R$ 0,00</span>
+        </div>
+        <p style="font-size:.7rem;color:var(--caramel);text-align:center;margin:12px 0 20px">Frete grátis em compras acima de R$ 500</p>
+        <a href="checkout.html" class="btn btn-primary btn-full">Finalizar Compra →</a>
+        <div style="display:flex;justify-content:center;gap:16px;margin-top:16px;font-size:.65rem;color:var(--caramel);text-align:center">
+          <span>🔒 Compra segura</span>
+          <span>✦ Produto original</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark"></div>
+          <div class="logo-text">
+            <span class="logo-name">PERROTTA</span>
+            <span class="logo-sub">Fragrances</span>
+          </div>
+        </div>
+        <p class="footer-tagline">Sofisticação em cada essência.</p>
+      </div>
+      <div>
+        <p class="footer-title">Navegação</p>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="shop.html" class="footer-link">Loja</a></li>
+          <li><a href="about.html" class="footer-link">Sobre</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-title">Atendimento</p>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">WhatsApp</a></li>
+          <li><a href="#" class="footer-link">E-mail</a></li>
+          <li><a href="#" class="footer-link">Trocas</a></li>
+        </ul>
+      </div>
+      <div></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Perrotta Fragrances.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/cart.js"></script>
+<script>
+function calcFrete() {
+  const cep = document.getElementById('cep-input').value.replace(/\D/g,'');
+  if (cep.length < 8) { showToast('CEP inválido. Digite 8 dígitos.', '✗'); return; }
+  showToast('Frete calculado com sucesso!', '✦');
+}
+</script>
+</body>
+</html>

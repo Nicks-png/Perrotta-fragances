@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produto — Perrotta Fragrances</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-offset">
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text">
+        <span class="logo-name">PERROTTA</span>
+        <span class="logo-sub">Fragrances</span>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="shop.html" class="nav-link">Loja</a>
+      <a href="shop.html#brands" class="nav-link">Marcas</a>
+      <a href="about.html" class="nav-link">Sobre</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn" aria-label="Carrinho">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-badge"></span>
+      </a>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav">
+  <a href="shop.html" class="nav-link">Loja</a>
+  <a href="about.html" class="nav-link">Sobre</a>
+  <a href="cart.html" class="nav-link">Carrinho</a>
+</nav>
+
+<!-- BREADCRUMB -->
+<div style="padding:20px 0 0;border-bottom:1px solid var(--nude)">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="shop.html">Loja</a>
+      <span class="breadcrumb-sep">›</span>
+      <span id="breadcrumb-name">Produto</span>
+    </nav>
+    <div style="height:20px"></div>
+  </div>
+</div>
+
+<main>
+  <!-- PRODUCT DETAIL (injected by product.js) -->
+  <section class="product-detail" id="product-detail"></section>
+
+  <!-- REVIEWS (injected by product.js) -->
+  <section id="reviews-section" style="background:rgba(232,213,196,.2)"></section>
+
+  <!-- RELATED PRODUCTS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" data-animate>
+        <span class="section-label">Você também pode gostar</span>
+        <h2 class="section-title">Fragrâncias Relacionadas</h2>
+        <div class="thin-divider"></div>
+      </div>
+      <div class="products-grid" id="related-grid"></div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark"></div>
+          <div class="logo-text">
+            <span class="logo-name">PERROTTA</span>
+            <span class="logo-sub">Fragrances</span>
+          </div>
+        </div>
+        <p class="footer-tagline">Sofisticação em cada essência.</p>
+      </div>
+      <div>
+        <p class="footer-title">Navegação</p>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="shop.html" class="footer-link">Loja</a></li>
+          <li><a href="about.html" class="footer-link">Sobre</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-title">Atendimento</p>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">WhatsApp</a></li>
+          <li><a href="#" class="footer-link">E-mail</a></li>
+        </ul>
+      </div>
+      <div></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Perrotta Fragrances.</span>
+      <span>Sofisticada · Feminina · Atemporal · Autêntica</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/product.js"></script>
+<script>
+  /* Update breadcrumb after product loaded */
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      const params = new URLSearchParams(location.search);
+      const p = getProductById(params.get('id'));
+      if (p) document.getElementById('breadcrumb-name').textContent = p.name;
+    }, 50);
+  });
+</script>
+</body>
+</html>

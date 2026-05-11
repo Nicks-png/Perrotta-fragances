@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja — Perrotta Fragrances</title>
+  <meta name="description" content="Explore nossa coleção completa de fragrâncias. Chanel, Dior, Valentino, Prada e mais.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-offset">
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"></div>
+      <div class="logo-text">
+        <span class="logo-name">PERROTTA</span>
+        <span class="logo-sub">Fragrances</span>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="shop.html" class="nav-link">Loja</a>
+      <a href="shop.html#brands" class="nav-link">Marcas</a>
+      <a href="about.html" class="nav-link">Sobre</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn" aria-label="Carrinho">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-badge"></span>
+      </a>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav">
+  <a href="shop.html" class="nav-link">Loja</a>
+  <a href="shop.html#brands" class="nav-link">Marcas</a>
+  <a href="about.html" class="nav-link">Sobre</a>
+  <a href="cart.html" class="nav-link">Carrinho</a>
+</nav>
+
+<main>
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Loja</span>
+    </nav>
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:16px">
+      <div>
+        <h1 class="serif">Coleção Completa</h1>
+        <p style="font-size:.85rem;color:var(--caramel);margin-top:6px">12 fragrâncias das maiores maisons do mundo</p>
+      </div>
+      <button class="btn btn-ghost mobile-filter-toggle" id="mobile-filter-toggle">Filtrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- SHOP LAYOUT -->
+<div class="container">
+  <div class="shop-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="shop-sidebar">
+
+      <!-- Search (mobile) -->
+      <div class="filter-section" style="display:none" id="mobile-search-section">
+        <div class="shop-search" style="max-width:none">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input id="shop-search-mobile" type="search" placeholder="Buscar fragrância...">
+        </div>
+      </div>
+
+      <!-- Gender -->
+      <div class="filter-section">
+        <p class="filter-title">Gênero</p>
+        <div class="filter-options">
+          <label class="filter-check"><input type="checkbox" data-filter="gender" value="Feminino"> Feminino</label>
+          <label class="filter-check"><input type="checkbox" data-filter="gender" value="Masculino"> Masculino</label>
+          <label class="filter-check"><input type="checkbox" data-filter="gender" value="Unissex"> Unissex</label>
+        </div>
+      </div>
+
+      <!-- Brand -->
+      <div class="filter-section" id="brands">
+        <p class="filter-title">Marca</p>
+        <div class="filter-options">
+          <label class="filter-check"><input type="checkbox" data-filter="brand" value="chanel"> Chanel</label>
+          <label class="filter-check"><input type="checkbox" data-filter="brand" value="dior"> Dior</label>
+          <label class="filter-check"><input type="checkbox" data-filter="brand" value="valentino"> Valentino</label>
+          <label class="filter-check"><input type="checkbox" data-filter="brand" value="prada"> Prada</label>
+          <label class="filter-check"><input type="checkbox" data-filter="brand" value="hugo-boss"> Hugo Boss</label>
+          <label class="filter-check"><input type="checkbox" data-filter="brand" value="dolce-gabbana"> Dolce &amp; Gabbana</label>
+          <label class="filter-check"><input type="checkbox" data-filter="brand" value="parfums-de-marly"> Parfums de Marly</label>
+          <label class="filter-check"><input type="checkbox" data-filter="brand" value="carolina-herrera"> Carolina Herrera</label>
+        </div>
+      </div>
+
+      <!-- Type -->
+      <div class="filter-section">
+        <p class="filter-title">Concentração</p>
+        <div class="filter-options">
+          <label class="filter-check"><input type="checkbox" data-filter="type" value="EDP"> EDP — Eau de Parfum</label>
+          <label class="filter-check"><input type="checkbox" data-filter="type" value="EDT"> EDT — Eau de Toilette</label>
+        </div>
+      </div>
+
+      <!-- Price -->
+      <div class="filter-section">
+        <p class="filter-title">Faixa de Preço</p>
+        <div class="price-range-inputs">
+          <input class="price-input" id="price-min" type="number" placeholder="Min" min="0">
+          <span class="price-sep">—</span>
+          <input class="price-input" id="price-max" type="number" placeholder="Máx" max="9999">
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div>
+      <!-- Top bar -->
+      <div class="shop-topbar">
+        <span class="shop-count" id="product-count">12 produtos encontrados</span>
+        <div class="shop-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input id="shop-search" type="search" placeholder="Buscar fragrância...">
+        </div>
+        <select class="sort-select" id="sort-select">
+          <option value="relevance">Relevância</option>
+          <option value="price-asc">Menor Preço</option>
+          <option value="price-desc">Maior Preço</option>
+          <option value="name">A — Z</option>
+          <option value="rating">Avaliação</option>
+        </select>
+      </div>
+
+      <!-- Active filter tags -->
+      <div class="active-filters" id="active-filters"></div>
+      <a class="clear-filters" id="clear-all" style="display:none">Limpar filtros</a>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="products-grid"></div>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark"></div>
+          <div class="logo-text">
+            <span class="logo-name">PERROTTA</span>
+            <span class="logo-sub">Fragrances</span>
+          </div>
+        </div>
+        <p class="footer-tagline">Sofisticação em cada essência.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-title">Navegação</p>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="shop.html" class="footer-link">Loja</a></li>
+          <li><a href="about.html" class="footer-link">Sobre Nós</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-title">Marcas</p>
+        <ul class="footer-links">
+          <li><a href="?brand=chanel" class="footer-link">Chanel</a></li>
+          <li><a href="?brand=dior" class="footer-link">Dior</a></li>
+          <li><a href="?brand=valentino" class="footer-link">Valentino</a></li>
+          <li><a href="?brand=prada" class="footer-link">Prada</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-title">Atendimento</p>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">WhatsApp</a></li>
+          <li><a href="#" class="footer-link">E-mail</a></li>
+          <li><a href="#" class="footer-link">Trocas</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Perrotta Fragrances.</span>
+      <span>Sofisticada · Feminina · Atemporal · Autêntica</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/shop.js"></script>
+</body>
+</html>
